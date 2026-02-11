@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OCRLens | Extração de Texto de Alta Precisão & OCR Online Gratuito</title>
+    <meta name="description" content="Converta imagens em texto com precisão cirúrgica usando OCRLens. A melhor ferramenta de OCR online com tradução inteligente, ajuste de imagem livre e privacidade total. Grátis e sem anúncios." />
+    <meta name="keywords" content="OCR, extrair texto de imagem, scanner online, traduzir imagem, ocr gratuito, reconhecimento de texto, converter foto em texto, ocrlens" />
+    <meta name="author" content="Valesthor" />
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2358a6ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7V5a2 2 0 0 1 2-2h2'%3E%3C/path%3E%3Cpath d='M17 3h2a2 2 0 0 1 2 2v2'%3E%3C/path%3E%3Cpath d='M21 17v2a2 2 0 0 1-2 2h-2'%3E%3C/path%3E%3Cpath d='M7 21H5a2 2 0 0 1-2-2v-2'%3E%3C/path%3E%3Cline x1='7' y1='12' x2='17' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='7' x2='12' y2='17'%3E%3C/line%3E%3C/svg%3E">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ocrlens.vercel.app/" />
+    <meta property="og:title" content="OCRLens - Precisão em Extração de Texto" />
+    <meta property="og:description" content="Extração inteligente de texto puro com suporte a mais de 9 idiomas e tradução em tempo real." />
+    <meta property="og:image" content="https://ocrlens.vercel.app/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ocrlens.vercel.app/" />
+    <meta property="twitter:title" content="OCRLens - OCR de Nova Geração" />
+    <meta property="twitter:description" content="A forma mais rápida e precisa de transformar suas imagens em dados editáveis." />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0d1117;
+        color: #c9d1d9;
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0d1117;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #30363d;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #484f58;
+      }
+
+      select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238b949e'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1rem;
+      }
+
+      /* React Image Crop Basic Styles Overrides */
+      .ReactCrop { position: relative; display: inline-block; cursor: crosshair; overflow: hidden; max-width: 100%; }
+      .ReactCrop__child-wrapper { display: block; max-width: 100%; }
+      .ReactCrop__child-wrapper > img { display: block; max-width: 100%; height: auto; }
+      .ReactCrop__crop-selection { position: absolute; top: 0; left: 0; transform: translate3d(0, 0, 0); box-sizing: border-box; cursor: move; border: 1px solid rgba(255, 255, 255, 0.5); outline: 1px solid rgba(0, 0, 0, 0.2); box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.6); }
+      .ReactCrop--disabled .ReactCrop__crop-selection { cursor: inherit; }
+      .ReactCrop__drag-handle { position: absolute; width: 12px; height: 12px; background-color: #58a6ff; border: 1px solid white; border-radius: 2px; }
+      .ReactCrop__drag-handle:after { content: ""; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; }
+      .ord-nw { top: -6px; left: -6px; cursor: nw-resize; }
+      .ord-n { top: -6px; left: 50%; margin-left: -6px; cursor: n-resize; }
+      .ord-ne { top: -6px; right: -6px; cursor: ne-resize; }
+      .ord-e { top: 50%; right: -6px; margin-top: -6px; cursor: e-resize; }
+      .ord-se { bottom: -6px; right: -6px; cursor: se-resize; }
+      .ord-s { bottom: -6px; left: 50%; margin-left: -6px; cursor: s-resize; }
+      .ord-sw { bottom: -6px; left: -6px; cursor: sw-resize; }
+      .ord-w { top: 50%; left: -6px; margin-top: -6px; cursor: w-resize; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4",
+    "react-image-crop": "https://esm.sh/react-image-crop@^11.0.10"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="selection:bg-[#1f6feb]/30">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

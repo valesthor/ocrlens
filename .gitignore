@@ -1,0 +1,47 @@
+# --- OCRLens - Git Ignore ---
+
+# Dependências (Nunca suba esta pasta)
+node_modules/
+jspm_packages/
+
+# Build e Saída
+dist/
+dist-ssr/
+*.local
+out/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Variáveis de Ambiente (Segurança Crítica)
+# Isso impede que suas chaves reais (VITE_GEMINI_API_KEY) vazem
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Arquivos do Sistema / Editores
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+
+# Vite específico
+# Se você usar o cache do Vite, ignore-o
+.vite/
