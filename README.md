@@ -2,7 +2,7 @@
 
   <br>
 
-  <img width="1200" alt="OCRLens Banner" src="" />
+  <img width="1200" alt="OCRLens Banner" src="public/banner-ocrlens.png" />
 
   <br>
 
@@ -42,7 +42,7 @@ Basta abrir a aplicação, acessar o ícone de configurações e inserir sua pr�
 ### 2. Desenvolvimento Local (Devs)
 ```
 # Clone o repositório
-git clone [https://github.com/seu-usuario/ocrlens.git](https://github.com/seu-usuario/ocrlens.git)
+git clone [https://github.com/seu-usuario/ocrlens.git]
 
 # Instale as dependências
 npm install
