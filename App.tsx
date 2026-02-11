@@ -75,17 +75,23 @@ const App: React.FC = () => {
   };
 
   const onImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const { width, height } = e.currentTarget;
-    const initialCrop = centerCrop(
-      makeAspectCrop(
-        { unit: '%', width: 80 },
-        undefined,
+  const { width, height } = e.currentTarget;
+  
+  // Definimos o aspect explicitamente (ex: 1 ou 16/9) ou 
+  // deixamos a lógica de fallback clara para o TS
+  const aspect = 1; 
+
+  const initialCrop = centerCrop(
+    makeAspectCrop(
+      { unit: '%', width: 80 },
+        aspect,
         width,
         height
       ),
       width,
       height
     );
+    
     setCrop(initialCrop);
   };
 
