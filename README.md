@@ -40,17 +40,27 @@ O OCRLens é agnóstico e respeita sua privacidade. Você pode usar a ferramenta
 Basta abrir a aplicação, acessar o ícone de configurações e inserir sua própria chave de API. Ela será salva de forma segura no seu `localStorage`.
 
 ### 2. Desenvolvimento Local (Devs)
+
+### Clone o repositório
+
 ```
-# Clone o repositório
 git clone [https://github.com/seu-usuario/ocrlens.git]
+```
 
-# Instale as dependências
+### Instale as dependências
+
+```
 npm install
+```
+### Configure seu .env.local
 
-# Configure seu .env.local
+```
 VITE_GEMINI_API_KEY=sua_chave_aqui
+```
 
-# Inicie o projeto
+### Inicie o projeto
+
+```
 npm run dev
 ```
 
